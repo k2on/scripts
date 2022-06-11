@@ -1,0 +1,4 @@
+#!/bin/sh
+
+code=$(echo $1 | sed 's/X/x/g' | sed 's/xx/0/')
+grep -i $code ~/dev/scripts/lib/codes
