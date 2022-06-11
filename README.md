@@ -6,3 +6,11 @@ All my shell scripts.
 
 Search HTTP status codes. [Video](https://www.youtube.com/watch?v=byKC9kLIWtE)
 
+## scr
+
+Find and edit a specific script.
+
+## unix
+
+Some unix art.
+
