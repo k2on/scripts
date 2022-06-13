@@ -8,9 +8,14 @@ All my shell scripts.
 
 ## Index
 
+- [bye](#bye)
 - [httpc](#httpc) [[🎥](video-httpc)]
 - [src](#src)
 - [srcn](#srcn) [[🎥](video-srcn)]
+
+## bye
+
+Put computer to sleep. Bye bye 👋
 
 ## httpc
 
