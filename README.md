@@ -10,6 +10,7 @@ All my shell scripts.
 
 - [bye](#bye)
 - [httpc](#httpc) [[🎥](video-httpc)]
+- [rain](#rain)
 - [src](#src)
 - [srcn](#srcn) [[🎥](video-srcn)]
 
@@ -27,6 +28,24 @@ httpc 200
 
 httpc not found
 # 404   NOT FOUND
+```
+
+## rain
+
+Display a doppler radar with [mpv](https://mpv.io/). Inspired from [this video](https://www.youtube.com/watch?v=qNtjud8zNa0). Pass in a flag to select from a list of places using [fzf](https://github.com/junegunn/fzf).
+
+```sh
+cat lib/places
+# Home    CODE
+# Away 1    CODE
+# Away 2    CODE
+```
+
+```sh
+# Use first code in places list
+rain
+# Select from list
+rain -a
 ```
 
 ## scr

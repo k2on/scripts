@@ -1,0 +1,16 @@
+#!/bin/sh
+
+places="${HOME}/dev/scripts/lib/places"
+
+if [[ $* == *-a* ]]
+then
+	name=$(awk '{print $1}' $places | fzf)
+	code=$(grep $name $places | awk '{print $2}')
+else
+	code=$(head -n 1 $places | awk '{print $2}')
+fi
+
+url="https://radar.weather.gov/ridge/lite/${code}_loop.gif"
+
+mpv $url --loop
+
