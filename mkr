@@ -1,0 +1,22 @@
+#!/bin/sh
+
+name=$1
+
+if [ "$name" == "" ]; then
+	echo "please enter a repo name"
+	exit 1
+fi
+
+if [[ $* == *-x* ]]
+then
+	gh repo new $name --public
+	echo "created PUBLIC repository: $name"
+else
+	gh repo new $name
+	echo "created repository: $name"
+fi
+
+gh repo clone $name
+
+cd "./$name"
+

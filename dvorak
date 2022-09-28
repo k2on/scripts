@@ -1,0 +1,6 @@
+#!/bin/sh
+
+dir=~/dev/scripts/lib/learn-dvorak/
+file="$dir$(ls $dir | fzf)"
+tt -words $file
+

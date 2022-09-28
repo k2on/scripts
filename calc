@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cane --finish "tr -d '\n' | pbcopy" "bc"
+

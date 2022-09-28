@@ -1,0 +1,26 @@
+#!/bin/sh
+
+dirs="${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcut-dirs"
+files="${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcut-files"
+
+# Output Locations
+
+output_fish="${XDG_CONFIG_HOME:-$HOME/.config}/fish/conf.d/shortcuts.fish"
+output_lf="${XDG_CONFIG_HOME:-$HOME/.config}/lf/shortcutrc"
+
+rm -f "$output_fish" "$output_lf" 2>/dev/null
+printf "# vim: filetype=sh\\n" > "$output_fish"
+
+
+eval "echo \"$(cat "$dirs")\"" | \
+awk "!/^\s*#/ && !/^\s*\$/ {gsub(\"\\\s*#.*$\",\"\");
+	printf(\"abbr %s \42cd %s; and ls -a\42\n\",\$1,\$2) >> \"$output_fish\"  ;
+	printf(\"map C%s cd \42%s\42 \n\",\$1,\$2)           >> \"$output_lf\" }"
+
+# Format the `files` file in the correct syntax and sent it to both configs.
+eval "echo \"$(cat "$files")\"" | \
+awk "!/^\s*#/ && !/^\s*\$/ {gsub(\"\\\s*#.*$\",\"\");
+	printf(\"abbr %s \42$EDITOR %s\42 \n\",\$1,\$2) >> \"$output_fish\"  ;
+	printf(\"map E%s \$$EDITOR \42%s\42 \n\",\$1,\$2)   >> \"$output_lf\" }"
+
+

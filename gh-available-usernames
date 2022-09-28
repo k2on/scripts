@@ -1,0 +1,15 @@
+#!/bin/sh
+
+while read NAME
+do
+    gh api users/$NAME > /dev/null
+    if [ $? == 1 ]; then
+	    echo "AVAILABLE: $NAME"
+    else
+	    echo "TAKEN: $NAME"
+    fi
+done < $1
+
+
+
+

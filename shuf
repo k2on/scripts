@@ -1,0 +1,12 @@
+#!/bin/sh
+
+awk '
+  BEGIN {srand()}
+  {
+    for (i = 1; i <= NF; i++) {
+      r = int(rand() * NF) + 1
+      x = $r; $r = $i; $i = x
+    }
+    print
+  }' < $1
+

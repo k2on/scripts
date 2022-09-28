@@ -1,0 +1,4 @@
+#!/bin/sh
+
+soffice --headless --convert-to pdf $1
+

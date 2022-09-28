@@ -1,0 +1,5 @@
+#!/bin/sh
+
+nvim ~/.config/skhd/skhdrc
+brew services restart skhd
+

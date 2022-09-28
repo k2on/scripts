@@ -1,0 +1,12 @@
+#!/bin/sh
+
+words=~/dev/scripts/lib/words
+out=~/dev/scripts/lib/learn-dvorak/
+
+egrep "^[aoeuhtns]+\$"                   $words > "${out}1-home-row-8-keys"
+egrep "^[aoeuhtnsid]+\$"                 $words > "${out}2-home-row-10-keys"
+egrep "^[aoeuhtnsidcfklmprv]+\$"         $words > "${out}3-home-row-and-cfklmprv"
+egrep "^[aoeuhtnsidbgjqwxyz]+\$"         $words > "${out}4-home-row-and-bgjqwxyz"
+egrep "^[aoeuhtnsidcfklmprvbgjqwxyz]+\$" $words > "${out}5-all-letters"
+
+

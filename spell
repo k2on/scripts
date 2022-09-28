@@ -1,0 +1,10 @@
+#!/bin/sh
+
+word=$(cat ~/dev/scripts/lib/words | fzf)
+if [ "$word" == "" ]; then
+	exit 0
+fi
+
+echo $word | tr -d '\n' | pbcopy
+echo "$word copied!"
+
