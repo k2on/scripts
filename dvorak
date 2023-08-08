@@ -1,6 +1,11 @@
 #!/bin/sh
 
 dir=~/dev/scripts/lib/learn-dvorak/
-file="$dir$(ls $dir | fzf)"
-tt -words $file
+name=$(ls $dir | fzf)
+file="$dir$name"
+if [[ $name == "6-code" ]]; then
+	cat $file | tt
+else
+	tt -words $file -n 15
+fi
 

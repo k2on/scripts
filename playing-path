@@ -1,0 +1,10 @@
+#!/usr/bin/osascript
+
+tell application "Music"
+     try
+        set thePath to POSIX path of (get location of current track)
+     on error
+        set thePath to "Not playing from local library."
+     end try
+     set output to thePath
+end tell

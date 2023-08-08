@@ -1,0 +1,4 @@
+#!/bin/sh
+
+yabai -m space --layout $([[ $(yabai -m query --spaces --space | jq '.type') == '"bsp"' ]] && echo float || echo bsp)
+

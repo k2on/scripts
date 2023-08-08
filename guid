@@ -1,0 +1,4 @@
+#!/bin/sh
+
+uuidgen | awk '{print tolower($0)}' | tr -d '\n' | pbcopy
+

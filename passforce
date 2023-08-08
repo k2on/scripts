@@ -1,0 +1,8 @@
+#!/bin/sh
+
+pass -c ris/salesforce
+
+sleep 2
+
+pass otp -c ris/salesforce-otp
+

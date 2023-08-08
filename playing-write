@@ -1,0 +1,8 @@
+#!/bin/sh
+
+./alb
+dir=~/dev/scripts/lib/playing/
+art="${dir}art.jpg"
+artSm="${dir}art-sm.jpg"
+convert $art -geometry x20 $artSm
+./playing > "${dir}text"

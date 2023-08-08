@@ -1,0 +1,49 @@
+#!/bin/sh
+
+read -p "URL: " url
+
+if [[ "${url}" == "https://soundcloud.com"* ]]; then
+	without_prefix="${url#https://soundcloud.com/}"
+	username="${without_prefix%%/*}"
+
+	artist=$(find_artist_id -i ~/.music/out.yml -a $username)
+	exit_code=$?
+
+	if [[ ${exit_code} -ne 0 ]]; then
+		read -p "Artist [${username}]: " artist
+		if [[ -z $artist ]]; then
+			artist=$username
+		fi
+	fi
+
+	old_ifs="${IFS}"
+	IFS="/"
+
+	# Split the URL into an array
+	url_parts=($url)
+
+	# Restore the original IFS value
+	IFS="${old_ifs}"
+
+	# Get the array length
+	array_length=${#url_parts[@]}
+
+	# Get the track name from the array (the last element)
+	track_name="${url_parts[array_length-1]}"
+
+	read -p "Name [$track_name]: " file
+
+	if [[ -z $file ]]; then
+		file=$track_name
+	fi
+
+	mkdir -p ~/.music/repo/phonkhub/artists/$artist
+	path=~/.music/repo/phonkhub/artists/$artist/$file.yml
+
+	yarcamp -s $url > $path
+
+	nvim $path
+else
+	echo "Bandcamp not supported yet"
+fi
+
